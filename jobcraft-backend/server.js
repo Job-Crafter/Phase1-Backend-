@@ -1,10 +1,12 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const auditRoute = require('./routes/audit');
 const uploadRoute = require('./routes/upload');
-const resumeRoute = require("./routes/resume");   
-require('dotenv').config();
+const resumeRoute = require("./routes/resume");  
+// const cohere = require("./utils/cohere"); 
+const aiRoutes = require("./routes/ai");
 
 
 const app = express();
@@ -34,8 +36,9 @@ app.get('/', (req, res) => {
 app.use('/api/upload', uploadRoute);
 app.use('/api/audit', auditRoute);
 app.use("/api/resume", resumeRoute);
-
+app.use("/api/ai", aiRoutes);
 // Start Server
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);

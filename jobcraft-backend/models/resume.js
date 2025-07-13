@@ -24,6 +24,7 @@ const mongoose = require('mongoose');
 const ResumeSchema = new mongoose.Schema({
   filename: String,
   resumeText: String,
+  goal: String, 
   createdAt: {
     type: Date,
     default: Date.now
